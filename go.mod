@@ -1,3 +1,3 @@
-module github.com/GlobalTechInfo/discardapi
+module github.com/GlobalTechInfo/discard-api
 
 go 1.23.11
