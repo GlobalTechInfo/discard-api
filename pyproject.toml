@@ -1,16 +1,19 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "discard-api"
+name = "discardapi-demo"
 version = "1.0.0"
-description = "A demo client for Discard API"
+description = "Python demo client for Discard API"
 readme = "README.md"
-license = {text = "MIT"}
+requires-python = ">=3.7"
+license = { text = "MIT" }
+
 authors = [
   { name = "Qasim Ali", email = "discardapi@gmail.com" }
 ]
+
 dependencies = [
   "requests"
 ]
