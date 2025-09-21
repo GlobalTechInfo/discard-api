@@ -85,6 +85,305 @@ GET https://discardapi.dpdns.org/api/endpoint?apikey=YOUR_KEY
   "result": { ... }
 }
 ```
+### 📌 API Examples
+### AlJazeera Headlines (🟢GET)
+
+**Endpoint**
+```nginx
+GET https://discardapi.dpdns.org/api/aljazeera?apikey=YOUR_API_KEY
+```
+**Response**
+```json
+{
+  "status": true,
+  "creator": "Qasim Ali 🩷",
+  "result": [
+    {
+      "id": "article-id",
+      "title": "Breaking news headline",
+      "image": "https://www.aljazeera.com/someimage.jpg",
+      "url": "https://www.aljazeera.com/news/2025/09/20/article-id"
+    }
+  ],
+  "timestamp": "2025-09-20 03:04 PM"
+}
+```
+
+### Full Article (🟢GET)
+
+**Endpoint**
+```nginx
+
+GET https://discardapi.dpdns.org/api/aljazeera/article?apikey=YOUR_API_KEY&url=https://www.aljazeera.com/news/2025/09/20/article-id
+```
+**Response**
+```json
+
+{
+  "status": true,
+  "creator": "Qasim Ali 🩷",
+  "result": {
+    "title": "Breaking news headline",
+    "subhead": "Article subhead",
+    "content": "Full article text...",
+    "image": "https://www.aljazeera.com/someimage.jpg",
+  },
+  "timestamp": "2025-09-20 03:04 PM"
+}
+```
+**Usage cURL**
+```nginx
+curl "https://discardapi.dpdns.org/api/aljazeera?apikey=YOUR_API_KEY"
+
+curl "https://discardapi.dpdns.org/api/aljazeera/article?apikey=YOUR_API_KEY&url=https://www.aljazeera.com/news/2025/09/20/article-id"
+```
+**Usage Node.js**
+```js
+
+import axios from "axios";
+
+async function getArticles() {
+  const res = await axios.get("https://discardapi.dpdns.org/api/aljazeera", {
+    params: { apikey: "YOUR_API_KEY" }
+  });
+  console.log(res.data);
+}
+
+async function getArticleDetails() {
+  const res = await axios.get("https://discardapi.dpdns.org/api/aljazeera/article", {
+    params: {
+      apikey: "YOUR_API_KEY",
+      url: "https://www.aljazeera.com/news/2025/09/20/article-id"
+    }
+  });
+  console.log(res.data);
+}
+
+getArticles();
+getArticleDetails();
+```
+**Usage Python**
+```py
+import requests
+
+base = "https://discardapi.dpdns.org/api"
+
+res = requests.get(f"{base}/aljazeera", params={"apikey": "YOUR_API_KEY"})
+print(res.json())
+
+res = requests.get(f"{base}/aljazeera/article", params={
+    "apikey": "YOUR_API_KEY",
+    "url": "https://www.aljazeera.com/news/2025/09/20/article-id"
+})
+print(res.json())
+```
+**Usage Go**
+```go
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+	"net/http"
+)
+
+func main() {
+	resp, _ := http.Get("https://discardapi.dpdns.org/api/aljazeera?apikey=YOUR_API_KEY")
+	body, _ := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(body))
+
+	resp, _ = http.Get("https://discardapi.dpdns.org/api/aljazeera/article?apikey=YOUR_API_KEY&url=https://www.aljazeera.com/news/2025/09/20/article-id")
+	body, _ = ioutil.ReadAll(resp.Body)
+	fmt.Println(string(body))
+}
+```
+**Usage PHP**
+```php
+<?php
+$articles = file_get_contents("https://discardapi.dpdns.org/api/aljazeera?apikey=YOUR_API_KEY");
+echo $articles;
+
+$article = file_get_contents("https://discardapi.dpdns.org/api/aljazeera/article?apikey=YOUR_API_KEY&url=https://www.aljazeera.com/news/2025/09/20/article-id");
+echo $article;
+?>
+```
+**Usage Java**
+```java
+import okhttp3.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder()
+            .url("https://discardapi.dpdns.org/api/aljazeera?apikey=YOUR_API_KEY")
+            .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            System.out.println(response.body().string());
+        }
+
+        Request articleRequest = new Request.Builder()
+            .url("https://discardapi.dpdns.org/api/aljazeera/article?apikey=YOUR_API_KEY&url=https://www.aljazeera.com/news/2025/09/20/article-id")
+            .build();
+
+        try (Response response = client.newCall(articleRequest).execute()) {
+            System.out.println(response.body().string());
+        }
+    }
+}
+```
+
+**Usage Swift**
+```swift
+import Foundation
+
+let url = URL(string: "https://discardapi.dpdns.org/api/aljazeera?apikey=YOUR_API_KEY")!
+
+let task = URLSession.shared.dataTask(with: url) { data, _, error in
+    if let error = error {
+        print("Error:", error)
+        return
+    }
+    if let data = data, let response = String(data: data, encoding: .utf8) {
+        print("Articles:", response)
+    }
+}
+task.resume()
+
+let detailURL = URL(string: "https://discardapi.dpdns.org/api/aljazeera/article?apikey=YOUR_API_KEY&url=https://www.aljazeera.com/news/2025/09/20/article-id")!
+
+let detailTask = URLSession.shared.dataTask(with: detailURL) { data, _, error in
+    if let error = error {
+        print("Error:", error)
+        return
+    }
+    if let data = data, let response = String(data: data, encoding: .utf8) {
+        print("Article Detail:", response)
+    }
+}
+detailTask.resume()
+```
+
+
+### Update Product (🟤PUT)
+
+**Endpoint**
+```nginx
+PUT https://discardapi.dpdns.org/api/update/product?id={product_id}&apikey={your_api_key}
+```
+**Request Parameters**
+
+**Query Parameters**
+| Name   | Type   | Required | Description            |
+|--------|--------|----------|------------------------|
+| apikey | string | ✅       | Your API key           |
+| id     | int    | ✅       | Product ID to update   |
+
+**Body Parameters (JSON or Form Data)**
+| Name        | Type      | Required | Description                     |
+|-------------|-----------|----------|---------------------------------|
+| id          | int/string| ✅       | Must match the `id` in query    |
+| title       | string    | ✅       | Product title                   |
+| price       | string    | ✅       | Product price                   |
+| description | string    | ✅       | Product description             |
+| category    | string    | ✅       | Product category                |
+| image       | string    | ✅       | Product image URL               |
+
+**Response Format**
+```json
+{
+  "status": true,
+  "creator": "Qasim Ali 🩷",
+  "result": {
+    "id": 1,
+    "title": "Updated Product",
+    "price": "15.99",
+    "description": "Updated description here",
+    "category": "electronics",
+    "image": "https://example.com/image.png"
+  }
+}
+```
+
+**Usage cURL**
+```bash
+curl -X PUT "https://discardapi.dpdns.org/api/update/product?id=1&apikey=your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "id": 1,
+    "title": "Updated Product",
+    "price": "15.99",
+    "description": "Updated description here",
+    "category": "electronics",
+    "image": "https://example.com/image.png"
+  }'
+```
+**Usage Node.js**
+```js
+import axios from "axios";
+
+const url = "https://discardapi.dpdns.org/api/update/product?id=1&apikey=your_api_key";
+
+axios.put(url, {
+  id: 1,
+  title: "Updated Product",
+  price: "15.99",
+  description: "Updated description here",
+  category: "electronics",
+  image: "https://example.com/image.png"
+})
+.then(res => console.log(res.data))
+.catch(err => console.error(err.response?.data || err.message));
+```
+**Usage Python**
+```py
+import requests
+
+url = "https://discardapi.dpdns.org/api/update/product"
+params = {"id": 1, "apikey": "your_api_key"}
+data = {
+    "id": 1,
+    "title": "Updated Product",
+    "price": "15.99",
+    "description": "Updated description here",
+    "category": "electronics",
+    "image": "https://example.com/image.png"
+}
+
+res = requests.put(url, params=params, json=data)
+print(res.json())
+```
+
+**Usage PHP**
+```php
+<?php
+$url = "https://discardapi.dpdns.org/api/update/product?id=1&apikey=your_api_key";
+
+$data = [
+  "id" => 1,
+  "title" => "Updated Product",
+  "price" => "15.99",
+  "description" => "Updated description here",
+  "category" => "electronics",
+  "image" => "https://example.com/image.png"
+];
+
+$options = [
+  "http" => [
+    "method"  => "PUT",
+    "header"  => "Content-Type: application/json",
+    "content" => json_encode($data)
+  ]
+];
+
+$context  = stream_context_create($options);
+$response = file_get_contents($url, false, $context);
+echo $response;
+?>
+```
+
+
 
 ### 🎴 Vignette Image Upload (🟣POST)
 
@@ -92,6 +391,24 @@ GET https://discardapi.dpdns.org/api/endpoint?apikey=YOUR_KEY
 ```nginx
 POST https://discardapi.dpdns.org/api/image/vignette
 ```
+
+**Request Parameters**
+
+| Name      | Type   | Required | Description                                         |
+|-----------|--------|----------|-----------------------------------------------------|
+| apikey    | string | ✅       | Your API key                                        |
+| file      | file   | ✅       | Image file to process                               |
+| intensity | float  | ❌       | Vignette intensity (0.1–1.0, default: `0.5`)        |
+| shape     | string | ❌       | Shape of vignette → `"circle"` or `"rectangle"`     |
+| color     | string | ❌       | Vignette color → `"black"` or HEX code (`#rrggbb`)  |
+
+
+**Response**
+- Success (Image Stream)
+
+- Content-Type: image/jpeg (or image/png depending on input)
+
+- Response is the processed image.
 
 **🔹Usage cURL**
 ```bash
@@ -182,13 +499,80 @@ if (strpos($contentType, "image/") === 0) {
 ?>
 ```
 
+**Usage Go**
+```go
+package main
+
+import (
+	"fmt"
+	"io"
+	"mime/multipart"
+	"net/http"
+	"os"
+	"strings"
+)
+
+func main() {
+	url := "https://discardapi.dpdns.org/api/image/vignette"
+
+	// Create multipart form
+	body := &strings.Builder{}
+	writer := multipart.NewWriter(body)
+
+	// Add API key and params
+	_ = writer.WriteField("apikey", "your_api_key")
+	_ = writer.WriteField("intensity", "0.8")
+	_ = writer.WriteField("shape", "circle")
+	_ = writer.WriteField("color", "#000000")
+
+	// Add file
+	file, err := os.Open("input.jpg")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	part, err := writer.CreateFormFile("file", "input.jpg")
+	if err != nil {
+		panic(err)
+	}
+	_, _ = io.Copy(part, file)
+	writer.Close()
+
+	// Send request
+	req, _ := http.NewRequest("POST", url, strings.NewReader(body.String()))
+	req.Header.Set("Content-Type", writer.FormDataContentType())
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+
+	// Check if response is image
+	contentType := resp.Header.Get("Content-Type")
+	if strings.HasPrefix(contentType, "image/") {
+		out, _ := os.Create("output.jpg")
+		defer out.Close()
+		_, _ = io.Copy(out, resp.Body)
+		fmt.Println("✅ Saved processed image to output.jpg")
+	} else {
+		// Print JSON error
+		errResp, _ := io.ReadAll(resp.Body)
+		fmt.Println(string(errResp))
+	}
+}
+```
+
+
 ### 📦 Catbox File Upload API (🟣POST)
 
 **Endpoint:**
 ```nginx
 POST https://discardapi.dpdns.org/api/catbox
 ```
-**Parameters**
+**Request Parameters**
 
 | Name   | Type   | Required | Description                         |
 | ------ | ------ | -------- | ----------------------------------- |
