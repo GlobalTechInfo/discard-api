@@ -1,6 +1,7 @@
 <h1 align="center">Discard Rest APIs</h1>
 
 <p align="center">
+  <img src="https://img.shields.io/npm/v/discard-api" alt="NPM Version">
   <img src="https://img.shields.io/badge/Made%20with-%E2%9D%A4-red" alt="Made with Love">
   <img src="https://img.shields.io/badge/Open%20Source-%F0%9F%8C%90-blue" alt="Open Source">
 </p>
@@ -9,6 +10,17 @@
   A hub of RESTful APIs for developers, providing 500+ powerful endpoints across multiple categories.<br>
   From downloaders and AI tools to image processing, games, and converters - everything you need to elevate your applications to new heights.
 </p>
+
+	
+<div align="center">
+
+[![Go Reference](https://pkg.go.dev/badge/github.com/GlobalTechInfo/discard-api.svg)](https://pkg.go.dev/github.com/GlobalTechInfo/discard-api)
+[![Go Report Card](https://goreportcard.com/badge/github.com/GlobalTechInfo/discard-api)](https://goreportcard.com/report/github.com/GlobalTechInfo/discard-api)
+[![GitHub release](https://img.shields.io/github/release/GlobalTechInfo/discard-api.svg)](https://github.com/GlobalTechInfo/discard-api/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+</div>
+
 
 ## Features
 
