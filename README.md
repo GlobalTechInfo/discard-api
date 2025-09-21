@@ -37,8 +37,6 @@ Explore our complete catalog at [discardapi.dpdns.org](https://discardapi.dpdns.
 
 ## Getting Started with Discard Rest APIs
 
-<details>
-<summary><b>Click to expand</b></summary>
 
 **Welcome to Discard Rest APIs, your one-stop solution for seamless API integrations! Our extensive collection of APIs is designed for developers building apps, businesses enhancing services, or tech enthusiasts experimenting with new ideas.**
 
@@ -61,37 +59,93 @@ Explore our complete catalog at [discardapi.dpdns.org](https://discardapi.dpdns.
 ### Step 5: Upgrade for More Features
 
 - For extensive usage and advanced features, upgrade to a PRO or VIP plan offering higher limits, faster response times, and premium feature access.
-</details>
 
 ---
 
 
-## 🚀 Quick Start  
+## 🚀 Quick Start
 
-Get started in seconds. Add your **API key** to any endpoint and receive structured JSON responses with comprehensive error handling.    
+### Account Registration
 
----
+**1: Create Account (🔵POST)**
+```nginx
+POST https://discardapi.dpdns.org/api/auth/signup
+{
+  "name": "John Doe",
+  "email": "john@example.com", 
+  "password": "strongpassword123"
+}
+```
+
+**Response (200)**
+```json
+{
+  "status": true,
+  "creator": "Qasim Ali 🩷",
+  "success": true,
+  "message": "Verification code sent"
+}
+```
+
+### 2: Verify Account (🔵POST)
+```nginx
+POST https://discardapi.dpdns.org/api/auth/verify-signup
+{
+  "email": "john@example.com",
+  "code": "123456"
+}
+```
+
+**Response (201)**
+```json
+{
+  "status": true,
+  "creator": "Qasim Ali 🩷", 
+  "success": true,
+  "message": "Account created successfully",
+  "api_key": "abcd1234efgh5678"
+}
+```
+
+Get started in seconds. Add your **API key** to any endpoint and receive structured JSON responses with comprehensive error handling.
 
 ### ⚙️ Request Format  
 ```http
 GET https://discardapi.dpdns.org/api/endpoint?apikey=YOUR_KEY
 ```
+**Request Parameters**
+
+| Name   | Type   | Required | Description                         |
+| ------ | ------ | -------- | ----------------------------------- |
+| apikey | string | ✅        | Your API key                        |
+
 
 ```json
 
 {
   "status": true,
   "creator": "Qasim Ali 🩷",
-  "result": { ... }
+  "result": {"..."}
 }
 ```
+---
+
 ### 📌 API Examples
+
+---
+
 ### AlJazeera Headlines (🟢GET)
 
 **Endpoint**
 ```nginx
 GET https://discardapi.dpdns.org/api/aljazeera?apikey=YOUR_API_KEY
 ```
+**Request Parameters**
+
+| Name   | Type   | Required | Description                         |
+| ------ | ------ | -------- | ----------------------------------- |
+| apikey | string | ✅        | Your API key                        |
+
 **Response**
 ```json
 {
@@ -116,6 +170,13 @@ GET https://discardapi.dpdns.org/api/aljazeera?apikey=YOUR_API_KEY
 
 GET https://discardapi.dpdns.org/api/aljazeera/article?apikey=YOUR_API_KEY&url=https://www.aljazeera.com/news/2025/09/20/article-id
 ```
+**Request Parameters**
+
+| Name   | Type   | Required | Description                         |
+| ------ | ------ | -------- | ----------------------------------- |
+| apikey | string | ✅        | Your API key                        |
+| url    | string | ✅        | Link/Url of the article             |
+
 **Response**
 ```json
 
@@ -264,7 +325,47 @@ let detailTask = URLSession.shared.dataTask(with: detailURL) { data, _, error in
 }
 detailTask.resume()
 ```
+---
 
+---
+
+### Markdown → HTML (🟣ALL)
+
+**Endpoint**
+```nginx
+POST https://discardapi.dpdns.org/api/markdown?apikey=YOUR_API_KEY
+```
+**Usage cURL**
+
+1. JSON body
+
+```bash
+curl -X POST "https://discardapi.dpdns.org/api/markdown?apikey=YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"markdown": "# Hello World\nThis is a test"}'
+   ```
+2. Form-urlencoded
+```nginx
+curl -X POST "https://discardapi.dpdns.org/api/markdown" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "apikey=YOUR_API_KEY&markdown=# Hello World\nThis is a test"
+```
+
+3. Plain text
+```nginx
+curl -X POST "https://discardapi.dpdns.org/api/markdown?apikey=YOUR_API_KEY" \
+  -H "Content-Type: text/plain" \
+  --data "# Hello World\nThis is a test"
+```
+
+4. File upload
+```nginx
+curl -X POST "https://discardapi.dpdns.org/api/markdown?apikey=YOUR_API_KEY" \
+  -F "file=@example.md"
+```
+---
+
+---
 
 ### Update Product (🟤PUT)
 
@@ -382,10 +483,11 @@ $response = file_get_contents($url, false, $context);
 echo $response;
 ?>
 ```
+---
 
+---
 
-
-### 🎴 Vignette Image Upload (🟣POST)
+### 🎴 Vignette Image Upload (🔵POST)
 
 **Endpoint**
 ```nginx
@@ -564,9 +666,11 @@ func main() {
 	}
 }
 ```
+---
 
+---
 
-### 📦 Catbox File Upload API (🟣POST)
+### 📦 Catbox File Upload API (🔵POST)
 
 **Endpoint:**
 ```nginx
@@ -809,7 +913,7 @@ fun main() {
     }
 }
 ```
-
+---
   
 ### 🚨 Common Error Codes
 
